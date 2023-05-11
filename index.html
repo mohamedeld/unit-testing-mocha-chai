@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./node_modules/mocha/mocha.css">
+</head>
+<body>
+    <div id="mocha"></div>
+    <script src="./node_modules/mocha/mocha.js"></script>
+    <script src="./node_modules/chai/chai.js"></script>
+    <script src="./calculator.js"></script>
+    <script>
+
+        mocha.setup('bdd');
+        const expect = chai.expect;
+const calObj = new Calculator();
+
+describe('calculator', function(){
+    describe("invalid numbers",function(){
+        it("should return not allowed",function(){
+            expect(calObj.add(null,12)).to.be.equal("not allowed");
+        });
+    });
+    describe("add method",function(){
+        it("should return summation of two positive number",function(){
+            expect(calObj.add(10,20)).to.be.equal(30);
+        });
+    });
+    describe('subtract method', function(){
+        it("should return subtraction of two number",function(){
+            expect(calObj.subtract(20,30)).to.be.equal(10);
+        });
+    });
+    describe("multiply method",function(){
+        it("should return multiply of two positive number",function(){
+            expect(calObj.multiply(10,5)).to.be.equal(50);
+        });
+    });
+    describe("division method",function(){
+        it("should return division of two positive number",function(){
+            expect(calObj.division(3,2)).to.be.equal(1.5);
+        });
+    });
+    describe("is valid login method",function(){
+        it("should return password between 4 and 10",function(){
+            const password = "123moh"
+            expect(isValidLogin(password)).to.be.equal(password)
+        })
+    })
+});
+mocha.run();
+    </script>
+</body>
+</html>
